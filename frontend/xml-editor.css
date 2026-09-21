@@ -1,0 +1,103 @@
+/* XML Editor Styles */
+.xml-editor-container {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.xml-editor-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.toolbar-btn {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.toolbar-btn:hover {
+    background: #e8f4fc;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.xml-status {
+    margin-left: auto;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.xml-status.valid {
+    color: #27ae60;
+    background: #e8f8e8;
+}
+
+.xml-status.invalid {
+    color: #e74c3c;
+    background: #fdf0f0;
+}
+
+.xml-editor {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border: none;
+    outline: none;
+    resize: vertical;
+    background: #2d2d2d;
+    color: #f8f8f2;
+    tab-size: 2;
+}
+
+.xml-editor:focus {
+    box-shadow: inset 0 0 0 2px #3498db;
+}
+
+.xml-preview {
+    border-top: 1px solid #e0e0e0;
+    background: white;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.preview-header {
+    padding: 0.5rem 1rem;
+    background: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 600;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+#previewContent {
+    padding: 1rem;
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #333;
+}
+
+/* XML Syntax Highlighting */
+.xml-tag { color: #2196f3; }
+.xml-attr-name { color: #ff9800; }
+.xml-attr-value { color: #4caf50; }
+.xml-comment { color: #9e9e9e; font-style: italic; }
+.xml-text { color: #f8f8f2; }

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeLibrary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HomeLibrary</h1>
+            <div class="header-actions">
+                <button id="addBookBtn" class="add-btn">Add New Book</button>
+            </div>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search books by title or author..." 
+                    class="search-input"
+                >
+                <button id="searchBtn" class="search-btn">Search</button>
+                <button id="clearBtn" class="clear-btn">Clear</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="table-wrapper">
+                <table id="booksTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booksBody">
+                    </tbody>
+                </table>
+                <div id="loading" class="loading hidden">Loading books...</div>
+                <div id="error" class="error hidden"></div>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <button id="prevBtn" class="page-btn" disabled>← Previous</button>
+                <div id="pageNumbers" class="page-numbers">
+                </div>
+                <button id="nextBtn" class="page-btn" disabled>Next →</button>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Book</h2>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <form id="bookForm" class="book-form">
+                <input type="hidden" id="bookId">
+                
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" required placeholder="Enter book title">
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author *</label>
+                    <input type="text" id="author" required placeholder="Enter author name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="publishingYear">Publishing Year</label>
+                    <input type="text" id="publishingYear" placeholder="e.g., 2023">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="tableOfContents">Table of Contents (XML)</label>
+                    <div class="xml-editor-container">
+                        <div class="xml-editor-toolbar">
+                            <button type="button" class="toolbar-btn" onclick="formatXML()" title="Format XML">📋 Format</button>
+                            <button type="button" class="toolbar-btn" onclick="validateXML()" title="Validate XML">✓ Validate</button>
+                            <button type="button" class="toolbar-btn" onclick="clearXML()" title="Clear">🗑️ Clear</button>
+                            <span id="xmlStatus" class="xml-status"></span>
+                        </div>
+                        <textarea id="tableOfContents" class="xml-editor"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Enter any notes about this book"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn" id="submitBtn">Create Book</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
