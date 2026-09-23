@@ -124,6 +124,7 @@ BEGIN
               Title LIKE '%' + @Query + '%'
               OR Author LIKE '%' + @Query + '%'
                OR TableOfContents.exist('/TableOfContents/Chapter[contains(@Title, sql:variable("@Query"))]') = 1
+               OR TableOfContents.exist('/TableOfContents/Chapter[Title = sql:variable("@Query")]') = 1
           )
         ORDER BY UpdatedAt DESC
         OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY
